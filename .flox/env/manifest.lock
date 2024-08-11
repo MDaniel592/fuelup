@@ -1,0 +1,148 @@
+{
+  "lockfile-version": 1,
+  "manifest": {
+    "version": 1,
+    "install": {
+      "nodejs": {
+        "pkg-path": "nodejs"
+      }
+    },
+    "vars": {},
+    "hook": {},
+    "profile": {},
+    "options": {
+      "systems": [
+        "aarch64-darwin",
+        "aarch64-linux",
+        "x86_64-darwin",
+        "x86_64-linux"
+      ],
+      "allow": {
+        "licenses": []
+      },
+      "semver": {}
+    }
+  },
+  "packages": [
+    {
+      "attr_path": "nodejs",
+      "broken": false,
+      "derivation": "/nix/store/g0fka5b4n2z08k4m61bgkw11biy9g433-nodejs-20.15.1.drv",
+      "description": "Event-driven I/O framework for the V8 JavaScript engine",
+      "install_id": "nodejs",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=5e0ca22929f3342b19569b21b2f3462f053e497b",
+      "name": "nodejs-20.15.1",
+      "pname": "nodejs",
+      "rev": "5e0ca22929f3342b19569b21b2f3462f053e497b",
+      "rev_count": 664135,
+      "rev_date": "2024-08-09T03:53:12Z",
+      "scrape_date": "2024-08-11T02:08:20Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "20.15.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "libv8": "/nix/store/zbyfi027sdvnxgrzqgallrmyzzifzkh5-nodejs-20.15.1-libv8",
+        "out": "/nix/store/pnz462fx615nhm9lavm25gvhl6q2rjhr-nodejs-20.15.1"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "nodejs",
+      "broken": false,
+      "derivation": "/nix/store/zm9zsz4zg9f0rlkml4c6j3yznyjb3y11-nodejs-20.15.1.drv",
+      "description": "Event-driven I/O framework for the V8 JavaScript engine",
+      "install_id": "nodejs",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=5e0ca22929f3342b19569b21b2f3462f053e497b",
+      "name": "nodejs-20.15.1",
+      "pname": "nodejs",
+      "rev": "5e0ca22929f3342b19569b21b2f3462f053e497b",
+      "rev_count": 664135,
+      "rev_date": "2024-08-09T03:53:12Z",
+      "scrape_date": "2024-08-11T02:08:20Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "20.15.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "libv8": "/nix/store/hjmd0akk51ngf69cyam19ibwc536mnnp-nodejs-20.15.1-libv8",
+        "out": "/nix/store/igqd6ci0dbhq2lbvb9hd47fzbsb1vp55-nodejs-20.15.1"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "nodejs",
+      "broken": false,
+      "derivation": "/nix/store/fr0b2ck1cwl7sfikrzn29q3wf3jh933b-nodejs-20.15.1.drv",
+      "description": "Event-driven I/O framework for the V8 JavaScript engine",
+      "install_id": "nodejs",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=5e0ca22929f3342b19569b21b2f3462f053e497b",
+      "name": "nodejs-20.15.1",
+      "pname": "nodejs",
+      "rev": "5e0ca22929f3342b19569b21b2f3462f053e497b",
+      "rev_count": 664135,
+      "rev_date": "2024-08-09T03:53:12Z",
+      "scrape_date": "2024-08-11T02:08:20Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "20.15.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "libv8": "/nix/store/nqlxmp8hgy061m0xv9ivaplln1824kk1-nodejs-20.15.1-libv8",
+        "out": "/nix/store/j4zrbdvppwxvvwnz5rk59qgv5f4077d0-nodejs-20.15.1"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "nodejs",
+      "broken": false,
+      "derivation": "/nix/store/bk4s3ikm26m6q6bn4sz7xfppqgpqqpil-nodejs-20.15.1.drv",
+      "description": "Event-driven I/O framework for the V8 JavaScript engine",
+      "install_id": "nodejs",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=5e0ca22929f3342b19569b21b2f3462f053e497b",
+      "name": "nodejs-20.15.1",
+      "pname": "nodejs",
+      "rev": "5e0ca22929f3342b19569b21b2f3462f053e497b",
+      "rev_count": 664135,
+      "rev_date": "2024-08-09T03:53:12Z",
+      "scrape_date": "2024-08-11T02:08:20Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "20.15.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "libv8": "/nix/store/amm162s6dwgsf0mj8j7i1h5f8n9ph2k0-nodejs-20.15.1-libv8",
+        "out": "/nix/store/zxa7qi0264hzsnf2bbyvrql5wy4fiy8j-nodejs-20.15.1"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    }
+  ]
+}
