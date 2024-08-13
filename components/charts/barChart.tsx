@@ -1,9 +1,9 @@
 "use client"
 
+import React from 'react';
 import { TrendingUp } from "lucide-react"
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts"
 import { useState, useEffect } from 'react'
-
 import {
   Card,
   CardContent,
@@ -36,6 +36,16 @@ interface ChartData {
   precio: number;
 }
 
+interface JsonData {
+  dof: string;
+  kilometers: number;
+  price: number;
+}
+
+interface CustomBarChartProps {
+  data: JsonData[];
+}
+
 const monthOrder: { [key: string]: number } = {
   "Enero": 0,
   "Febrero": 1,
@@ -51,16 +61,11 @@ const monthOrder: { [key: string]: number } = {
   "Diciembre": 11,
 };
 
-function CustomBarChart() {
-  const [chartData, setChartData] = useState<ChartData[]>([]);
-
-  const getChartData = () => {
-    const storedData = localStorage.getItem('userData');
-    const jsonArray: Array<{ dof: string; kilometers: number; price: number }> = storedData ? JSON.parse(storedData) : [];
-
+const CustomBarChart: React.FC<CustomBarChartProps> = ({ data }) => {
+  const formattedData = React.useMemo(() => {
     const arrayData: ChartData[] = [];
-
-    jsonArray.forEach((item) => {
+    
+    data.forEach((item) => {
       const date = new Date(item.dof);
       const monthString = date.toLocaleString('es-ES', { month: 'long' });
       const capitalizedMonth = monthString.charAt(0).toUpperCase() + monthString.slice(1);
@@ -80,12 +85,8 @@ function CustomBarChart() {
     });
 
     arrayData.sort((a, b) => monthOrder[a.mes] - monthOrder[b.mes]);
-    setChartData(arrayData);
-  };
-
-  useEffect(() => {
-    if (chartData.length === 0) getChartData();
-  }, [chartData]);
+    return arrayData;
+  }, [data]);
 
 
   return (
@@ -97,7 +98,7 @@ function CustomBarChart() {
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig} className="h-[100px]">
-          <BarChart accessibilityLayer data={chartData}>
+          <BarChart accessibilityLayer data={formattedData}>
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="mes"
@@ -110,7 +111,8 @@ function CustomBarChart() {
               tickLine={false}
               axisLine={false}
               tickFormatter={(value) => value}
-              width={20}
+              width={30}
+              unit="km"
             />
             <ChartTooltip
               cursor={false}
@@ -128,7 +130,7 @@ function CustomBarChart() {
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig} className="h-[100px]">
-          <BarChart accessibilityLayer data={chartData}>
+          <BarChart accessibilityLayer data={formattedData}>
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="mes"
@@ -141,7 +143,8 @@ function CustomBarChart() {
               tickLine={false}
               axisLine={false}
               tickFormatter={(value) => value}
-              width={20} 
+              width={20}
+              unit="€"
             />
             <ChartTooltip
               cursor={false}

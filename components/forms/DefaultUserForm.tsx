@@ -34,6 +34,7 @@ import { CalendarIcon } from 'lucide-react'
 import { DayPicker } from 'react-day-picker'
 import 'react-day-picker/style.css'
 import { format } from "date-fns"
+
 const FormSchema = z.object({
   kilometers: z
     .coerce.number() 
@@ -67,21 +68,25 @@ const FormSchema = z.object({
   })
 })
 
-function DefaultUserForm() {
-  function onSubmit(values: z.infer<typeof FormSchema>) {
-    const storedData = localStorage.getItem('userData')
-    let jsonArray = storedData ? JSON.parse(storedData) : []
-    
-    // Fix date to UTC
-    values.dof = new Date(Date.UTC(values.dof.getFullYear(), values.dof.getMonth(), values.dof.getDate(), 12));
-    jsonArray.push(values)
-
-    localStorage.setItem('userData', JSON.stringify(jsonArray))
-  }
+function DefaultUserForm({ onSave }) {
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema)
   })
+
+  function onSubmit(values: z.infer<typeof FormSchema>) {
+    const storedData = localStorage.getItem('userData');
+    let jsonArray = storedData ? JSON.parse(storedData) : [];
+    
+    // Fix date to UTC
+    values.dof = new Date(Date.UTC(values.dof.getFullYear(), values.dof.getMonth(), values.dof.getDate(), 12));
+    jsonArray.push(values);
+
+    localStorage.setItem('userData', JSON.stringify(jsonArray));
+    onSave(); 
+  }
+
+
   return (
     <Card>
     <CardHeader>
