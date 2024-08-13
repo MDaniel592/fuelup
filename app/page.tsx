@@ -21,10 +21,10 @@ export default function Page() {
 
   return (
     <div className="flex flex-col gap-2 p-4">
-      <div className="text-2xl font-bold bg-gray-100 rounded text-center">
+      <div className="text-2xl font-semibold bg-gray-100 rounded text-center">
         FuelUp
       </div>
-      <div className="flex gap-2">
+      <div className="flex flex-col gap-2">
         <DefaultUserForm onSave={updateData} />
         <CustomBarChart data={data}/>
       </div>

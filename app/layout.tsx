@@ -24,7 +24,7 @@ export default function RootLayout({
       </head>
 
       <html lang="en">
-        <body className="w-fit mx-auto min-h-[80vh]">{children}</body>
+        <body className="w-1/3 mx-auto min-h-[80vh]">{children}</body>
       </html>
     </>
   )

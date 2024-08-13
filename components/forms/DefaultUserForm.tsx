@@ -34,6 +34,7 @@ import { CalendarIcon } from 'lucide-react'
 import { DayPicker } from 'react-day-picker'
 import 'react-day-picker/style.css'
 import { format } from "date-fns"
+import Modal from '../ui/modal';
 
 const FormSchema = z.object({
   kilometers: z
@@ -70,6 +71,11 @@ const FormSchema = z.object({
 
 function DefaultUserForm({ onSave }) {
 
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema)
   })
@@ -84,6 +90,7 @@ function DefaultUserForm({ onSave }) {
 
     localStorage.setItem('userData', JSON.stringify(jsonArray));
     onSave(); 
+    openModal();
   }
 
 
@@ -193,8 +200,11 @@ function DefaultUserForm({ onSave }) {
           <Button type="submit">Submit</Button>
         </form>
       </Form>
-
-      </CardContent>  
+      </CardContent> 
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <h2 className="text-lg font-bold">Respostaje añadido correctamente</h2>
+        <p>Ese mensaje se cerrará automáticamente pasados 3 segundos.</p>
+      </Modal> 
     </Card>
   )
 }

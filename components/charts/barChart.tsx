@@ -97,7 +97,7 @@ const CustomBarChart: React.FC<CustomBarChartProps> = ({ data }) => {
         <CardDescription>Enero - Diciembre 2024</CardDescription>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig} className="h-[100px]">
+        <ChartContainer config={chartConfig}>
           <BarChart accessibilityLayer data={formattedData}>
             <CartesianGrid vertical={false} />
             <XAxis
@@ -111,7 +111,7 @@ const CustomBarChart: React.FC<CustomBarChartProps> = ({ data }) => {
               tickLine={false}
               axisLine={false}
               tickFormatter={(value) => value}
-              width={30}
+              width={40}
               unit="km"
             />
             <ChartTooltip
@@ -129,7 +129,7 @@ const CustomBarChart: React.FC<CustomBarChartProps> = ({ data }) => {
         <CardDescription>Enero - Diciembre 2024</CardDescription>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig} className="h-[100px]">
+        <ChartContainer config={chartConfig}>
           <BarChart accessibilityLayer data={formattedData}>
             <CartesianGrid vertical={false} />
             <XAxis
@@ -143,7 +143,7 @@ const CustomBarChart: React.FC<CustomBarChartProps> = ({ data }) => {
               tickLine={false}
               axisLine={false}
               tickFormatter={(value) => value}
-              width={20}
+              width={25}
               unit="€"
             />
             <ChartTooltip
