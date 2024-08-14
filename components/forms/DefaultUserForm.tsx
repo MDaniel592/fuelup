@@ -35,6 +35,7 @@ import { DayPicker } from 'react-day-picker'
 import 'react-day-picker/style.css'
 import { format } from "date-fns"
 import Modal from '../ui/modal';
+import { saveUserData } from '../../services/UserService';
 
 const FormSchema = z.object({
   kilometers: z
@@ -69,7 +70,7 @@ const FormSchema = z.object({
   })
 })
 
-function DefaultUserForm({ onSave }) {
+function DefaultUserForm({ onSave, userData, userId }) {
 
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
@@ -80,28 +81,31 @@ function DefaultUserForm({ onSave }) {
     resolver: zodResolver(FormSchema)
   })
 
-  function onSubmit(values: z.infer<typeof FormSchema>) {
-    const storedData = localStorage.getItem('userData');
-    let jsonArray = storedData ? JSON.parse(storedData) : [];
+  async function onSubmit(values: z.infer<typeof FormSchema>) {
+    console.log(userData)
+    let jsonArray = (userData.length !== 0) ? userData : [];
     
     // Fix date to UTC
     values.dof = new Date(Date.UTC(values.dof.getFullYear(), values.dof.getMonth(), values.dof.getDate(), 12));
     jsonArray.push(values);
 
-    localStorage.setItem('userData', JSON.stringify(jsonArray));
-    onSave(); 
+    const jsonData = {userId: userId, userData: jsonArray}
+    await saveUserData(jsonData);
+
+    await onSave(); 
     openModal();
   }
-
 
   return (
     <Card>
     <CardHeader>
       <CardTitle>Registro de datos</CardTitle>
-      <CardDescription>Introduce un nuevo repostaje</CardDescription>
+      <CardDescription>
+          Usuario: {userId}
+          {/* <p>Introduce un nuevo repostaje</p> */}
+      </CardDescription>
     </CardHeader>
-    <CardContent>    
-
+    <CardContent>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <FormField
